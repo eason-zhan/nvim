@@ -7,5 +7,7 @@ local keymap = vim.keymap
 
 keymap.set("n", "<leader>q", ":q<CR>") -- quit
 keymap.set("n", "<leader>s", ":w<CR>") -- save
+
 keymap.set("n", "-", "ddp") -- Swap current line with next line
 keymap.set("n", "_", "ddkP") -- Swap current line with prev line
+keymap.set("n", "<leader>t", "yiw:%s/<C-r><C-W>>/") -- substitute the current word
