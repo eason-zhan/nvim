@@ -1,13 +1,20 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-vim.g.mapleaer = ","
-
 local keymap = vim.keymap
 
-keymap.set("n", "<leader>q", ":q<CR>") -- quit
+-- General keymaps
+keymap.set("n", "<leader>q", ":q<CR>") -- quit without saving
 keymap.set("n", "<leader>s", ":w<CR>") -- save
 
 keymap.set("n", "-", "ddp") -- Swap current line with next line
 keymap.set("n", "_", "ddkP") -- Swap current line with prev line
 keymap.set("n", "<leader>t", "yiw:%s/<C-r><C-W>>/") -- substitute the current word
+keymap.set("n", "<leader>ag", ":Ag <C-R><C-W><CR>") -- Ag search current word
+
+keymap.set('n', '<leader>p', require('telescope.builtin').find_files, {})
+keymap.set('n', '<leader>b', require('telescope.builtin').buffers, {})
+
+-- Nvim-tree
+keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>") -- toggle file explorer
+keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>") -- toggle focus to file explorer
+keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>") -- find file in file explorer
+
+
