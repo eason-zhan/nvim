@@ -2,7 +2,7 @@ local keymap = vim.keymap
 
 -- General keymaps
 keymap.set("n", "<leader>q", ":q<CR>") -- quit without saving
-keymap.set("n", "<leader>s", ":w<CR>") -- save
+keymap.set("n", "<leader>w", ":w<CR>") -- save
 
 keymap.set("n", "-", "ddp") -- Swap current line with next line
 keymap.set("n", "_", "ddkP") -- Swap current line with prev line
