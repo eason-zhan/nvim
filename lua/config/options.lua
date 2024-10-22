@@ -26,3 +26,10 @@ opt.wrap = false
 opt.ignorecase = true
 opt.smartcase = true
 
+vim.cmd[[colorscheme dracula]]
+
+-- Define a custom command
+vim.api.nvim_create_user_command('Colorscheme', function(opts)
+    -- This is the function that gets called when you run :MyCommand
+    require('telescope.builtin').colorscheme()
+end, {})
