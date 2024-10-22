@@ -10,3 +10,8 @@ The Eclipse JDT Language Server is a Java language specific implementation of th
 LazyVim/LazyVim is too aggressive. So just use folk/lazy.nvim as a plugin manager.
 
 First, let it to give you some color see see.
+
+
+### LSP
+
+Get started at [https://lsp-zero.netlify.app/docs/tutorial.html#tutorial](https://lsp-zero.netlify.app/docs/tutorial.html)
