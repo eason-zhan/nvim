@@ -74,7 +74,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { "lua_ls", "rust_analyzer" },
+    ensure_installed = {
+        "biome",
+        "lua_ls",
+        "rust_analyzer"
+    },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({})
@@ -87,16 +91,16 @@ require('lspconfig').lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
-                version = 'LuaJIT',  -- Specify the Lua version
+                version = 'LuaJIT', -- Specify the Lua version
             },
             diagnostics = {
-                globals = { 'vim' },  -- Recognize vim as a global variable
+                globals = { 'vim' }, -- Recognize vim as a global variable
             },
             workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),  -- Use Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true), -- Use Neovim runtime files
             },
             telemetry = {
-                enable = false,  -- Disable telemetry
+                enable = false, -- Disable telemetry
             },
         },
     },

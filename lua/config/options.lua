@@ -11,7 +11,7 @@ opt.expandtab = true
 opt.tabstop = 4
 
 -- Set 4 spaces to use for each step of (auto)ident
-opt.shiftwidth = 4 
+opt.shiftwidth = 4
 
 -- Makes `Tab` and `Backspace` feel like a tab is 4 spaces wide.
 opt.softtabstop = 4
@@ -31,7 +31,7 @@ opt.termguicolors = true
 vim.cmd.colorscheme('dracula')
 
 -- Define a custom command
-vim.api.nvim_create_user_command('Colorscheme', function(opts)
+vim.api.nvim_create_user_command('Colorscheme', function()
     -- This is the function that gets called when you run :MyCommand
     require('telescope.builtin').colorscheme()
 end, {})

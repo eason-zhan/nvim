@@ -7,6 +7,12 @@ return {
                 'c',
                 'cpp',
                 'java',
+                'javascript',
+                'jq',
+                'json',
+                'rust',
+                'tmux',
+                'tsx',
             },
             highlight = {
                 enable = true
