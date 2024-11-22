@@ -118,7 +118,8 @@ require("lazy").setup({
 All the data is installed in the `~/.local`
 
 
+#### 
 
+Ok, what's the next?
 
-
-
+- [ ] LSP
