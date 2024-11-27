@@ -26,3 +26,6 @@ opt.termguicolors = true
 
 -- no hlsearch
 opt.hlsearch = false
+
+-- Allow yank to system clipboard
+opt.clipboard:append("unnamedplus")
