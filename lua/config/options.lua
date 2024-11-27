@@ -23,3 +23,6 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.termguicolors = true
+
+-- no hlsearch
+opt.hlsearch = false

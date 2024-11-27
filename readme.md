@@ -127,3 +127,4 @@ Ok, what's the next?
 Just use mason-nvim to install LSP server(jdtls), and install nvim-jdtls to config for my java project.
 
 - [ ] LSP
+
