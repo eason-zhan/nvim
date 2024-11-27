@@ -122,4 +122,8 @@ All the data is installed in the `~/.local`
 
 Ok, what's the next?
 
+[Config LSP is simple](https://www.reddit.com/r/neovim/comments/12itdmx/psa_configuring_lsp_wo_nvimlspconfig_is_simple/)
+
+Just use mason-nvim to install LSP server(jdtls), and install nvim-jdtls to config for my java project.
+
 - [ ] LSP
