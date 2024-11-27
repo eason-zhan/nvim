@@ -8,7 +8,8 @@ keymap.set('n', '_', 'ddkP', {desc = 'Swap current line with prev line'})
 keymap.set("n", "<leader>t", "yiw:%s/<C-r><C-W>/", {desc = 'Substitute the current word'})
 
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>", { desc = 'Toggle file explorer' }) 
+keymap.set("n", "<leader>es", ":NvimTreeFindFile<CR>", {desc = 'Sync to opened file in explorer'}) 
 
 -- lua-fzf
 local fzf = require('fzf-lua')
