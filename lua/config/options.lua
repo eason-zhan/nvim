@@ -29,3 +29,15 @@ opt.hlsearch = false
 
 -- Allow yank to system clipboard
 opt.clipboard:append("unnamedplus")
+
+
+opt.list = true
+
+local space = "·"
+opt.listchars:append {
+	tab = "│─",
+	multispace = space,
+	lead = space,
+	trail = space,
+	nbsp = space
+}
