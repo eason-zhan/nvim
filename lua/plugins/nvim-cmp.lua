@@ -80,9 +80,9 @@ return {
 
       sources = cmp.config.sources({
         { name = "nvim_lsp" }, -- lsp 
-        { name = "codeium" }, -- codeium
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
+        { name = "codecompanion" }, -- text codecompanion
         { name = "path" }, -- file system paths
       }),
 

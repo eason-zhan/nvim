@@ -29,3 +29,12 @@ keymap.set('n', '<C-w>_', cmd 'WindowsMaximizeVertically')
 keymap.set('n', '<C-w>|', cmd 'WindowsMaximizeHorizontally')
 keymap.set('n', '<C-w>=', cmd 'WindowsEqualize')
 
+-- Codecompanion
+keymap.set('v', '<leader>ce', "", {
+  callback = function()
+    require("codecompanion").prompt("explain")
+  end,
+  noremap = true,
+  silent = true,
+  desc = "Code Explain"
+})
