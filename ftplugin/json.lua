@@ -1,0 +1,7 @@
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = "json",
+--   callback = function() 
+--     vim.opt_local.formatarg = 'jq'
+--   end,
+--   desc = "Set formatarg to jq for json files"
+-- })

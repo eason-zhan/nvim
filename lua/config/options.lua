@@ -33,6 +33,8 @@ opt.clipboard:append("unnamedplus")
 
 opt.list = true
 
+opt.wrap = true
+
 local space = "·"
 opt.listchars:append {
 	tab = "│─",
