@@ -8,7 +8,7 @@ return {
   
   config = function()
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'c', 'cpp', 'lua', 'java' }, -- just ust TSInstall all
+      ensure_installed = { 'c', 'cpp', 'lua', 'java', 'json', 'yaml', 'sql'}, -- just ust TSInstall all
 
       auto_install = true,
 
