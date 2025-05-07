@@ -13,8 +13,11 @@ keymap.set('n', '_', 'ddkP', {desc = 'Swap current line with prev line'})
 keymap.set("n", "<leader>t", "yiw:%s/<C-r><C-W>/", {desc = 'Substitute the current word'})
 
 -- nvim-tree
-keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>", { desc = 'Toggle file explorer' }) 
-keymap.set("n", "<leader>es", ":NvimTreeFindFile<CR>", {desc = 'Sync to opened file in explorer'}) 
+keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>", { desc = 'Toggle file explorer' })
+keymap.set("n", "<leader>es", ":NvimTreeFindFile<CR>", {desc = 'Sync to opened file in explorer'})
+
+-- nivm aerial -- tag
+keymap.set("n", "<leader>a", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 
 -- vim easy align
 keymap.set('n', 'ga', '<Plug>(EasyAlign)', { noremap = false, silent = true })
@@ -34,21 +37,22 @@ keymap.set('n', '<C-w>_', cmd 'WindowsMaximizeVertically')
 keymap.set('n', '<C-w>|', cmd 'WindowsMaximizeHorizontally')
 keymap.set('n', '<C-w>=', cmd 'WindowsEqualize')
 
--- Codecompanion
-keymap.set('v', '<leader>ce', "", {
-  callback = function()
-    require("codecompanion").prompt("explain")
-  end,
-  noremap = true,
-  silent = true,
-  desc = "Code Explain"
-})
 
-keymap.set("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-keymap.set("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-keymap.set("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-keymap.set("v", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
+-- -- Codecompanion
+-- keymap.set('v', '<leader>ce', "", {
+--   callback = function()
+--     require("codecompanion").prompt("explain")
+--   end,
+--   noremap = true,
+--   silent = true,
+--   desc = "Code Explain"
+-- })
+-- Don't use <c-a> for CodeCompanionActions because it is use for number acc
+-- keymap.set("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+-- keymap.set("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+-- keymap.set("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+-- keymap.set("v", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+-- keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+--
+-- -- Expand 'cc' into 'CodeCompanion' in the command line
+-- vim.cmd([[cab cc CodeCompanion]])
