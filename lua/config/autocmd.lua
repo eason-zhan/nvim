@@ -3,22 +3,22 @@
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   pattern = '*.alias',
 
-  callback = function() 
+  callback = function()
     vim.bo.filetype = 'zsh' -- Use 'vim.bo' for buffer-local options.
   end
 })
 
 -- Set local options for Python filetype
--- au FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 autoindent 
+-- au FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 autoindent
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'python',
 
   callback = function()
     vim.opt_local.expandtab = true
-    vim.opt_local.tabstop = 4 
+    vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
-    vim.opt_local.softtabstop = 4 
-    vim.opt_local.autoindent = true 
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.autoindent = true
   end,
 
 })
@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 })
 
--- Add lsp keymappings 
+-- Add lsp keymappings
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -72,3 +72,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.api.nvim_create_user_command('Dclist', vim.diagnostic.setqflist, {})
     end,
 })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+    end
+  end,
+})
+

@@ -8,12 +8,12 @@ local project_name = vim.fn.fnamemodify(
     ':p:h:t:'         -- :p modifier to convert to the absolute path
                       -- :h modifier to return the directory path
                       -- :t modifier to return the tail of the path
-  ) 
+  )
 local workspace_dir = home .. '/.jdtls-workspace/' .. project_name
 
 local os_mappings = { mac = "mac", unix = 'linux', win32 = 'win', win64 = 'win' }
 
-local os_name = '' 
+local os_name = ''
 for key, value in pairs(os_mappings) do
   if vim.fn.has(key) == 1 then
     os_name = value
