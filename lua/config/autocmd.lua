@@ -35,50 +35,48 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Add lsp keymappings
 vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client.server_capabilities.hoverProvider then
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-        end
-        if client.server_capabilities.signatureHelpProvider then
-            vim.keymap.set({ 'n', 'i' }, '<c-k>', vim.lsp.buf.signature_help, { buffer = args.buf })
-        end
-        if client.server_capabilities.declarationProvider then
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf })
-        end
-        if client.server_capabilities.definitionProvider then
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
-        end
-        if client.server_capabilities.typeDefinitionProvider then
-            vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { buffer = args.buf })
-        end
-        if client.server_capabilities.implementationProvider then
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = args.buf })
-        end
-        if client.server_capabilities.referencesProvider then
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = args.buf })
-        end
-        if client.server_capabilities.renameProvider then
-            vim.keymap.set('n', 'cr', vim.lsp.buf.rename, { buffer = args.buf })
-        end
-        if client.server_capabilities.codeActionProvider then
-            vim.keymap.set('n', 'cx', vim.lsp.buf.code_action, { buffer = args.buf })
-        end
+  desc = 'LSP actions',
 
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { buffer = args.buf })
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { buffer = args.buf })
-        vim.keymap.set('n', '<space>', vim.diagnostic.open_float, { buffer = args.buf })
-        vim.api.nvim_create_user_command('Dllist', vim.diagnostic.setloclist, {})
-        vim.api.nvim_create_user_command('Dclist', vim.diagnostic.setqflist, {})
-    end,
-})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+  callback = function (args)
+    local mapper = function (mode, key, cmd)
+      local opts = {buffer = args.buf}
+      vim.keymap.set(mode, key, cmd, opts)
     end
-  end,
+
+    -- Trigger Code completion
+    mapper('i', '<C-Space>', '<C-x><C-o>')
+
+    -- Display documentation of the symbol under the cursor
+    mapper('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+
+    -- Jump to the definition
+    mapper('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+
+    -- Jump to declaration
+    mapper('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+    -- Lists all the implementations for the symbol under the cursor
+    mapper('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+
+    -- Jumps to the definition of the type symbol
+    mapper('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+
+    -- Lists all the references
+    mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+
+    -- Displays a function's signature information
+    mapper('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+
+    -- Renames all references to the symbol under the cursor
+    -- vim.11 default grr
+    -- mapper('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+
+    -- Format current file
+    -- mapper('n', '<F3>', '<cmd>lua vim.lsp.buf.format()<cr>')
+
+    -- Selects a code action available at the current cursor position
+    -- mapper('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+  end
 })
+
 

@@ -20,6 +20,7 @@ return {
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
+    "-javaagent:" .. jdtls_dir .. "/lombok_from_projectlombok.org/lombok.jar",
     '-Xmx4g',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
@@ -53,10 +54,17 @@ return {
 
       home = "/usr/local/jdk",
 
+      contentProvider = { preferred = "fernflower" },
+
       eclipse = {
         downloadSources = true,
       },
+      -- ConfigurationOptions
       configuration = {
+        maven = {
+          userSettings = home .. '/.m2/settings.xml',
+          globalSettings = home .. '/.m2/settings.xml',
+        },
         updateBuildConfiguration = "interactive",
 
         runtimes = {
@@ -66,6 +74,7 @@ return {
           },
         },
       },
+      -- MavenOptions
       maven = {
         downloadSources = true,
       },
