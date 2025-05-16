@@ -2,6 +2,7 @@ local opt = vim.opt
 
 -- Line Numbers
 opt.number = true
+opt.relativenumber = true
 
 -- Set expandtab to convert tab to spaces
 opt.expandtab = true

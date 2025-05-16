@@ -1,3 +1,4 @@
+local jdtls = require('jdtls')
 local home = vim.env.HOME -- Get the home(~) directory
 local project_name = vim.fn.fnamemodify(
     vim.fn.getcwd(),  -- get current working directory
@@ -9,7 +10,7 @@ local project_name = vim.fn.fnamemodify(
 local workspace_dir = home .. '/.jdtls-workspace-pure/' .. project_name
 local jdtls_dir = home .. '/code/github.com/jdtls-1.46.1'
 
-return {
+local config = {
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
@@ -61,15 +62,17 @@ return {
       },
       -- ConfigurationOptions
       configuration = {
-        maven = {
-          userSettings = home .. '/.m2/settings.xml',
-          globalSettings = home .. '/.m2/settings.xml',
-        },
+
+        -- maven = {
+        --   userSettings = home .. '/.m2/settings.xml',
+        --   globalSettings = home .. '/.m2/settings.xml',
+        -- },
+        --
         updateBuildConfiguration = "interactive",
 
         runtimes = {
           {
-            name = "JavaSE-21",
+            name = "JavaSE-17",
             path = "/usr/local/jdk",
           },
         },
@@ -127,10 +130,18 @@ return {
   -- You need to extend the `bundles` with paths to jar files
   -- if you want to use additional eclipse.jdt.ls plugins.
   --
-  -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-  --
-  -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+
+  -- Needed for auto-completion with method signatures and placeholders
+  -- capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  flags = {
+    allow_incremental_sync = true,
+  },
   init_options = {
-    bundles = {}
+    -- References the bundles defined above to support Debugging and Unit Testing
+    bundles = {},
+    extendedClientCapabilities = jdtls.extendedClientCapabilities,
   },
 }
+
+-- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
+jdtls.start_or_attach(config)
