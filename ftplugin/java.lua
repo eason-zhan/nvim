@@ -9,6 +9,13 @@ local project_name = vim.fn.fnamemodify(
 
 local workspace_dir = home .. '/.jdtls-workspace-pure/' .. project_name
 local jdtls_dir = home .. '/code/github.com/jdtls-1.46.1'
+-- Needed for debugging
+local bundles = {
+  -- I have not installed the java debug plugin
+  -- vim.fn.glob(share_path .. '/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
+}
+
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/code/gbay/vscode-java-test/server/*.jar", 1), "\n"))
 
 local config = {
   -- The command that starts the language server
@@ -72,7 +79,7 @@ local config = {
 
         runtimes = {
           {
-            name = "JavaSE-17",
+            name = "JavaSE-21",
             path = "/usr/local/jdk",
           },
         },
@@ -138,10 +145,12 @@ local config = {
   },
   init_options = {
     -- References the bundles defined above to support Debugging and Unit Testing
-    bundles = {},
+    bundles = bundles,
     extendedClientCapabilities = jdtls.extendedClientCapabilities,
   },
 }
+
+print(bundles)
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
 jdtls.start_or_attach(config)

@@ -1,23 +1,25 @@
 -- precognition.nvim assists with discovering motions (Both vertical and horizontal) to navigate your current buffer
 
 return {
-    "tris203/precognition.nvim",
-    event = "VeryLazy",
-    opts = {
+  -- https://github.com/tris203/precognition.nvim
+  "tris203/precognition.nvim",
+  enabled = false, -- disabled for a time
+  event = "VeryLazy",
+  opts = {
     -- startVisible = true,
     -- showBlankVirtLine = true,
     -- highlightColor = { link = "Comment" },
     hints = {
-         Caret = { text = "0", prio = 2 },
-    --      Dollar = { text = "$", prio = 1 },
-    --      MatchingPair = { text = "%", prio = 5 },
-    --      Zero = { text = "0", prio = 1 },
-    --      w = { text = "w", prio = 10 },
-    --      b = { text = "b", prio = 9 },
-    --      e = { text = "e", prio = 8 },
-    --      W = { text = "W", prio = 7 },
-    --      B = { text = "B", prio = 6 },
-    --      E = { text = "E", prio = 5 },
+      Caret = { text = "0", prio = 2 },
+      --      Dollar = { text = "$", prio = 1 },
+      --      MatchingPair = { text = "%", prio = 5 },
+      --      Zero = { text = "0", prio = 1 },
+      --      w = { text = "w", prio = 10 },
+      --      b = { text = "b", prio = 9 },
+      --      e = { text = "e", prio = 8 },
+      --      W = { text = "W", prio = 7 },
+      --      B = { text = "B", prio = 6 },
+      --      E = { text = "E", prio = 5 },
     },
     -- gutterHints = {
     --     G = { text = "G", prio = 10 },
@@ -28,5 +30,5 @@ return {
     -- disabled_fts = {
     --     "startify",
     -- },
-    },
+  },
 }
