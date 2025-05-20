@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- mapper('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
     -- Format current file
-    -- mapper('n', '<F3>', '<cmd>lua vim.lsp.buf.format()<cr>')
+    mapper({'n', 'v'}, 'gq', '<cmd>lua vim.lsp.buf.format()<cr>')
 
     -- Selects a code action available at the current cursor position
     -- mapper('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')

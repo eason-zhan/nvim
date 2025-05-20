@@ -27,9 +27,10 @@ keymap.set('v', 'ga', '<Plug>(EasyAlign)', { noremap = false, silent = true })
 local fzf = require('fzf-lua')
 keymap.set('n', '<leader>p', fzf.files, { desc = 'Fzf Files'})
 keymap.set('n', '<leader>b', fzf.buffers, { desc = 'Fzf Buffers'})
+keymap.set('n', '<leader>h', fzf.command_history, { desc = 'Command History'})
 keymap.set('n', '<leader>,', fzf.commands, { desc = 'Fzf Commands'})
 keymap.set('n', '<leader>ag', fzf.grep_cWORD, { desc = 'Fzf Search WORD under cursor'}) -- maybe base is rg
-
+keymap.set('n', 'gra', fzf.lsp_code_actions, { desc = "Lsp Code Actions"})
 
 -- Windows maximizer
 keymap.set('n', '<C-w>z', cmd 'WindowsMaximize', {desc = 'Toggle Maximize'})

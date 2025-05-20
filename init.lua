@@ -4,5 +4,4 @@ require('config.keymaps')
 require('config.autocmd')
 require('config.command')
 
-vim.lsp.enable({'luals', 'pyright', 'clangd'})
-
+vim.lsp.enable({'luals', 'pyright', 'clangd', 'lemminx'})
