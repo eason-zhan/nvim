@@ -1,11 +1,26 @@
--- pip install pyright
--- `--stdio` using stdio as the IPC, rather than using `--socket={port_number} or --node-ipc'
---
+---@brief
+---
+--- https://github.com/microsoft/pyright
+---
+--- `pyright`, a static type checker and language server for python
+
+local function set_python_path(path)
+  local clients = vim.lsp.get_clients {
+    bufnr = vim.api.nvim_get_current_buf(),
+    name = 'pyright',
+  }
+  for _, client in ipairs(clients) do
+    if client.settings then
+      client.settings.python = vim.tbl_deep_extend('force', client.settings.python, { pythonPath = path })
+    else
+      client.config.settings = vim.tbl_deep_extend('force', client.config.settings, { python = { pythonPath = path } })
+    end
+    client.notify('workspace/didChangeConfiguration', { settings = nil })
+  end
+end
+
 return {
-  cmd = {
-    'pyright-langserver', -- pip install pyright
-    '--stdio', -- Starting LSP over stdin/stdout
-  },
+  cmd = { 'pyright-langserver', '--stdio' },
   filetypes = { 'python' },
   root_markers = {
     'pyproject.toml',
@@ -16,7 +31,6 @@ return {
     'pyrightconfig.json',
     '.git',
   },
-
   settings = {
     python = {
       analysis = {
@@ -26,7 +40,6 @@ return {
       },
     },
   },
-
   on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'LspPyrightOrganizeImports', function()
       client:exec_cmd({
@@ -42,6 +55,4 @@ return {
       complete = 'file',
     })
   end,
-
-
 }

@@ -58,7 +58,10 @@ local function symbol_info()
 end
 
 return {
-  cmd = { 'clangd' },
+  cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+  init_options = {
+    fallbackFlags = { '-std=c++20' },
+  },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   root_markers = {
     '.clangd',
